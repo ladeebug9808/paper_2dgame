@@ -93,15 +93,18 @@ public class GrapplingGun : MonoBehaviour
         if (joint) Destroy(joint);
     }
 
-    void PullPlayer()
+void PullPlayer()
+{
+    float distance = Vector3.Distance(player.position, grapplePoint);
+    if (distance > minDistance)
     {
-        float distance = Vector3.Distance(player.position, grapplePoint);
-        if (distance > minDistance)
-        {
-            Vector3 direction = (grapplePoint - player.position).normalized;
-            playerRb.AddForce(direction * pullForce, ForceMode.Acceleration);
-        }
+        Vector3 direction = (grapplePoint - player.position).normalized;
+
+        // Frame-rate independent pull
+        playerRb.AddForce(direction * pullForce * Time.deltaTime, ForceMode.VelocityChange);
     }
+}
+
 
     void DrawRope()
     {

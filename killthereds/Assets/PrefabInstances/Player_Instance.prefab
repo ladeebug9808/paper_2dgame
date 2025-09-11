@@ -29,7 +29,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1.5, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2902270476250478184}
+  - {fileID: 6146548507953087566}
   m_Father: {fileID: 2902270477145832445}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -89,7 +91,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2902270476068473140}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d279f5f4c9fd2f641b0d12117ed693d5, type: 3}
   m_Name: 
@@ -122,11 +124,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2902270476250478185}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.66, y: 0.826, z: 0}
-  m_LocalScale: {x: 1, y: 1.5, z: 1}
+  m_LocalPosition: {x: -0.49, y: 0.29866666, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2902270477888784349}
-  m_RootOrder: 1
+  m_Father: {fileID: 2902270476068473143}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2902270476250478186
 MonoBehaviour:
@@ -150,7 +152,7 @@ MonoBehaviour:
   maxDistance: 50
   drawRopeSpeed: 30
   cameraManager: {fileID: 2902270477888784348}
-  pullForce: 40
+  pullForce: 200
   minDistance: 5
   displaceAmount: 1
   sineSpeed: 50
@@ -397,9 +399,9 @@ MonoBehaviour:
   slideForce: 1500
   slideCounterMovement: 0
   jumpForce: 800
-  jumpWhileSlidingMultiplier: 1
+  jumpWhileSlidingMultiplier: 1.5
   shakeInstancePrefab: {fileID: 6908625063166158251, guid: 9e0aac0e64a752b469e4303645674ac6, type: 3}
-  minAirTimeForShake: 2
+  minAirTimeForShake: 1.5
   maxPoundForce: 10000
   poundRate: 9000
   currentPoundForce: 0
@@ -758,7 +760,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2902270477394075749}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.78, y: 1.09, z: -2.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2902270477654225974}
@@ -829,7 +831,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2902270477654225975}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.00000011920929, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2902270477394075748}
@@ -983,8 +985,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4148841691085574259}
-  - {fileID: 2902270476250478184}
-  - {fileID: 6146548507953087566}
   m_Father: {fileID: 2902270476395904021}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1044,11 +1044,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4201006198788071686}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.66, y: 0.826, z: 0}
-  m_LocalScale: {x: 1, y: 1.5, z: 1}
+  m_LocalPosition: {x: 0.49, y: 0.29866666, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2902270477888784349}
-  m_RootOrder: 2
+  m_Father: {fileID: 2902270476068473143}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &474624224094640114
 MonoBehaviour:
@@ -1072,7 +1072,7 @@ MonoBehaviour:
   maxDistance: 50
   drawRopeSpeed: 30
   cameraManager: {fileID: 2902270477888784348}
-  pullForce: 40
+  pullForce: 200
   minDistance: 5
   displaceAmount: 1
   sineSpeed: 50
