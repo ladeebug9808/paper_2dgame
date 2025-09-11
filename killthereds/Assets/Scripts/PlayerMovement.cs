@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     private bool readyToJump = true;
     private float jumpCooldown = 0.25f;
     public float jumpForce = 550f;
+    public float jumpWhileSlidingMultiplier;
 
     [Header("Landing Shake Settings")]
     public GameObject shakeInstancePrefab;
@@ -65,11 +66,15 @@ public class PlayerMovement : MonoBehaviour
     public bool isSliding;
     public bool lockMovementControls;
 
+    
+
     void Start()
     {
         playerScale = transform.localScale;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+
     }
 
     private void FixedUpdate()
@@ -202,8 +207,17 @@ public class PlayerMovement : MonoBehaviour
             readyToJump = false;
 
             //Add jump forces
-            rb.AddForce(Vector2.up * jumpForce * 1.5f);
-            rb.AddForce(normalVector * jumpForce * 0.5f);
+if (!isSliding)
+{
+    rb.AddForce(Vector2.up * jumpForce * 1.5f);
+    rb.AddForce(normalVector * jumpForce * 0.5f);
+}
+else
+{
+    rb.AddForce(Vector2.up * jumpForce * 1.5f * jumpWhileSlidingMultiplier);
+    rb.AddForce(normalVector * jumpForce * 0.5f * jumpWhileSlidingMultiplier);
+}
+
 
             //If jumping while falling, reset y velocity.
             Vector3 vel = rb.velocity;

@@ -34,9 +34,14 @@ public class GrapplingGun : MonoBehaviour
     void Update()
     {
         if (cameraManager.lockCameraControls) return;
-        if (Input.GetKeyDown(keyCode))
+
+        // ✅ Hold-to-grapple logic
+        if (Input.GetKey(keyCode))
         {
-            StartGrapple();
+            if (!IsGrappling())
+            {
+                TryStartGrapple();
+            }
         }
         else if (Input.GetKeyUp(keyCode))
         {
@@ -54,33 +59,38 @@ public class GrapplingGun : MonoBehaviour
         DrawRope();
     }
 
-    void StartGrapple()
+    void TryStartGrapple()
     {
         RaycastHit hit;
         if (Physics.Raycast(camera.position, camera.forward, out hit, maxDistance, whatIsGrappleable))
         {
-            grapplePoint = hit.point;
-            joint = player.gameObject.AddComponent<SpringJoint>();
-            joint.autoConfigureConnectedAnchor = false;
-            joint.connectedAnchor = grapplePoint;
-
-            float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
-            joint.maxDistance = distanceFromPoint * 0.8f;
-            joint.minDistance = distanceFromPoint * 0.25f;
-            joint.spring = 4.5f;
-            joint.damper = 7f;
-            joint.massScale = 4.5f;
-
-            lr.positionCount = 20; // make rope have more points for sine wave
-            currentGrapplePosition = gunTip.position;
-            ropeTimer = 0f; // reset timer for sine fade
+            StartGrapple(hit.point);
         }
+    }
+
+    void StartGrapple(Vector3 point)
+    {
+        grapplePoint = point;
+        joint = player.gameObject.AddComponent<SpringJoint>();
+        joint.autoConfigureConnectedAnchor = false;
+        joint.connectedAnchor = grapplePoint;
+
+        float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
+        joint.maxDistance = distanceFromPoint * 0.8f;
+        joint.minDistance = distanceFromPoint * 0.25f;
+        joint.spring = 4.5f;
+        joint.damper = 7f;
+        joint.massScale = 4.5f;
+
+        lr.positionCount = 20; // more rope points for sine wave
+        currentGrapplePosition = gunTip.position;
+        ropeTimer = 0f; // reset timer for sine fade
     }
 
     void StopGrapple()
     {
         lr.positionCount = 0;
-        Destroy(joint);
+        if (joint) Destroy(joint);
     }
 
     void PullPlayer()
@@ -111,7 +121,9 @@ public class GrapplingGun : MonoBehaviour
             Vector3 point = Vector3.Lerp(start, end, alpha);
 
             // Apply sine wave displacement that fades over time
-            Vector3 offset = Vector3.up * Mathf.Sin(Time.time * sineSpeed + alpha * Mathf.PI * 2) * displaceAmount * (1f - t);
+            Vector3 offset = Vector3.up * Mathf.Sin(Time.time * sineSpeed + alpha * Mathf.PI * 2) 
+                             * displaceAmount * (1f - t);
+
             lr.SetPosition(i, point + offset);
         }
     }

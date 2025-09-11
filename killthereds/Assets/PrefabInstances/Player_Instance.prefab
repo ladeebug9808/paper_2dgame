@@ -147,14 +147,14 @@ MonoBehaviour:
   gunTip: {fileID: 2902270476250478184}
   camera: {fileID: 2902270477888784349}
   player: {fileID: 2902270476260513651}
-  maxDistance: 100
+  maxDistance: 50
   drawRopeSpeed: 30
   cameraManager: {fileID: 2902270477888784348}
   pullForce: 40
-  minDistance: 7
+  minDistance: 5
   displaceAmount: 1
   sineSpeed: 50
-  timeTillStraight: 0.3
+  timeTillStraight: 0.7
   joint: {fileID: 0}
 --- !u!120 &2902270476250478187
 LineRenderer:
@@ -397,6 +397,7 @@ MonoBehaviour:
   slideForce: 1500
   slideCounterMovement: 0
   jumpForce: 800
+  jumpWhileSlidingMultiplier: 1
   shakeInstancePrefab: {fileID: 6908625063166158251, guid: 9e0aac0e64a752b469e4303645674ac6, type: 3}
   minAirTimeForShake: 2
   maxPoundForce: 10000
@@ -1068,14 +1069,14 @@ MonoBehaviour:
   gunTip: {fileID: 6146548507953087566}
   camera: {fileID: 2902270477888784349}
   player: {fileID: 2902270476260513651}
-  maxDistance: 100
+  maxDistance: 50
   drawRopeSpeed: 30
   cameraManager: {fileID: 2902270477888784348}
   pullForce: 40
-  minDistance: 7
+  minDistance: 5
   displaceAmount: 1
   sineSpeed: 50
-  timeTillStraight: 0.3
+  timeTillStraight: 0.7
   joint: {fileID: 0}
 --- !u!120 &2621208114671334418
 LineRenderer:
