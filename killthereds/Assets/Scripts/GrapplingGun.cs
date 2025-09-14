@@ -11,6 +11,8 @@ public class GrapplingGun : MonoBehaviour
     public float drawRopeSpeed;
     public CameraManager cameraManager;
 
+    
+
     [Header("Pull Settings")]
     public float pullForce = 20f;
     public float minDistance = 2f;
@@ -28,10 +30,14 @@ public class GrapplingGun : MonoBehaviour
     void Awake()
     {
         lr = GetComponent<LineRenderer>();
-        playerRb = player.GetComponent<Rigidbody>();
     }
 
-    void Update()
+  void Start()
+  {
+    playerRb = player.GetComponent<Rigidbody>();
+  }
+
+  void Update()
     {
         if (cameraManager.lockCameraControls) return;
 

@@ -51,7 +51,12 @@ public class PlayerMovement : MonoBehaviour
     public float maxPoundForce = 2000f;
     public float poundRate = 500f;
 
-    [SerializeField]private float currentPoundForce = 0f;
+    [Header("Iten Settings")]
+    public bool isHoldingItem;
+
+    [Space(20f)]
+
+    [SerializeField] private float currentPoundForce = 0f;
     public bool isChargingPound = false;
 
     //Input
